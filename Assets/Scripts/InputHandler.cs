@@ -9,11 +9,13 @@ namespace Scripts {
 		private NinjaCharacter m_Character; // A reference to the NinjaCharacter on the object
 		private Vector2 m_Move;             // Movement controls
 		private bool m_Jump;
+		public float speedOverride = 1;
 
 		// Use this for initialization
 		private void Start () {
 			// get the Ninja character ( this should never be null due to require component )
 			m_Character = GetComponent<NinjaCharacter>();
+
 		}
 		
 		// Update is called once per frame
@@ -32,7 +34,7 @@ namespace Scripts {
 			//bool crouch = Input.GetKey(KeyCode.C);
 
 
-			m_Move = new Vector2 (v,h);
+			m_Move = new Vector2 (v+speedOverride,h);
 
 
 			// pass all parameters to the character control script

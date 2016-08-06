@@ -8,6 +8,12 @@ namespace Scripts {
 		Animator m_Animator;
 		float m_TurnAmount;
 		float m_ForwardAmount;
+		public Transform worldObject;
+		public Transform ninjaHolder;
+		public float worldSpeed = 1f;
+		public float worldTurnRate = 1f;
+		public float turnBoost = 22;
+
 
 		// Use this for initialization
 		void Start () {
@@ -30,6 +36,9 @@ namespace Scripts {
 				jumping = jump;
 			}
 
+			worldObject.transform.position = worldObject.transform.position - Vector3.forward * Time.deltaTime * worldSpeed * m_ForwardAmount;
+			ninjaHolder.Rotate(new Vector3(0, 0, m_TurnAmount * Time.deltaTime * worldTurnRate));
+			transform.localRotation = Quaternion.AngleAxis (m_TurnAmount * turnBoost, Vector3.up);
 			// send input and other state parameters to the animator
 			UpdateAnimator(move, jumping);
 		}
