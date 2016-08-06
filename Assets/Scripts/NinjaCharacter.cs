@@ -37,7 +37,9 @@ namespace Scripts {
 			}
 
 			worldObject.transform.position = worldObject.transform.position - Vector3.forward * Time.deltaTime * worldSpeed * m_ForwardAmount;
-			ninjaHolder.Rotate(new Vector3(0, 0, m_TurnAmount * Time.deltaTime * worldTurnRate));
+			if (m_TurnAmount != 0f) {
+				ninjaHolder.Rotate (new Vector3 (0, 0, m_TurnAmount * m_ForwardAmount * Time.deltaTime * worldTurnRate));
+			}
 			transform.localRotation = Quaternion.AngleAxis (m_TurnAmount * turnBoost, Vector3.up);
 			// send input and other state parameters to the animator
 			UpdateAnimator(move, jumping);
@@ -49,7 +51,16 @@ namespace Scripts {
 			m_Animator.SetFloat("Direction", m_TurnAmount);
 			m_Animator.SetBool ("Jump", jumping);
 			print (m_ForwardAmount);
-			m_Animator.speed = m_AnimSpeedMultiplier;
+
+			if (!jumping)
+			{
+				m_Animator.speed = m_AnimSpeedMultiplier;
+			}
+			else
+			{
+				// don't use that while airborne
+				m_Animator.speed = 1;
+			}
 		}			
 	}
 }
