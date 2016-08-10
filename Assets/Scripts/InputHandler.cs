@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -9,7 +9,9 @@ namespace Scripts {
 		private NinjaCharacter m_Character; // A reference to the NinjaCharacter on the object
 		private Vector2 m_Move;             // Movement controls
 		private bool m_Jump;
+        private bool m_Flip;
 		public float speedOverride = 1;
+        public float timeToFlip = 1.0f;
 
 		// Use this for initialization
 		private void Start () {
@@ -23,6 +25,10 @@ namespace Scripts {
 			if (!m_Jump) {
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
+
+            if (!m_Flip) {
+                m_Flip = Input.GetKeyDown (KeyCode.F);
+            }
 		}
 
 		// Fixed update is called in sync with physics
@@ -39,6 +45,8 @@ namespace Scripts {
 
 			// pass all parameters to the character control script
 			m_Character.Move(m_Move, m_Jump);
+            m_Character.Flip(m_Flip);
+            m_Flip = false;
 			m_Jump = false;
 		}
 	}

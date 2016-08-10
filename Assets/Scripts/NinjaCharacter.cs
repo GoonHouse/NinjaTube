@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Scripts {
 	[RequireComponent(typeof(Animator))]
@@ -13,6 +13,11 @@ namespace Scripts {
 		public float worldSpeed = 1f;
 		public float worldTurnRate = 1f;
 		public float turnBoost = 22;
+        public bool isFlipping = false;
+        public float originalRotation;
+        public float finalRotation;
+        public float flipTime = 0.25f;
+        public float flipTimer = 0f; 
 
 
 		// Use this for initialization
@@ -24,6 +29,28 @@ namespace Scripts {
 		void Update () {
 		
 		}
+
+        public void Flip(bool flip) {
+            if( flip && !isFlipping) {
+                isFlipping = true;
+                originalRotation = ninjaHolder.eulerAngles.z;
+                finalRotation = originalRotation + 180.0f;
+            }
+
+            if( isFlipping ) {
+                flipTimer += Time.deltaTime;
+                if (flipTimer >= flipTime) {
+                    isFlipping = false;
+                    flipTimer = flipTime;
+                }
+                var rot = ninjaHolder.eulerAngles;
+                rot.z = Mathf.LerpAngle(originalRotation, finalRotation, flipTimer / flipTime);
+                ninjaHolder.eulerAngles = rot;
+                if( flipTimer == flipTime ){
+                    flipTimer = 0.0f;
+                }
+            }
+        }
 
 		public void Move(Vector2 move, bool jump)
 		{
