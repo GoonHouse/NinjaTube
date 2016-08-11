@@ -30,6 +30,11 @@ namespace Scripts {
 		
 		}
 
+		public void FrontFlip(){
+			bool go = true;
+			Flip (go);
+		}
+
         public void Flip(bool flip) {
             if( flip && !isFlipping) {
                 isFlipping = true;
