@@ -191,7 +191,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.41786742
+      - time: 0.3429395
         functionName: FrontFlip
         data: 
         objectReferenceParameter: {instanceID: 0}

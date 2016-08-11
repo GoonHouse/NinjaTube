@@ -502,7 +502,7 @@ Prefab:
     - target: {fileID: 114000011131591252, guid: 06540bb4769c2f247844c5e2fa7cf9d5,
         type: 2}
       propertyPath: flipTime
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06540bb4769c2f247844c5e2fa7cf9d5, type: 2}
