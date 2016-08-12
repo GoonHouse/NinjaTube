@@ -50,7 +50,6 @@ namespace Scripts {
                 }
                 var rot = ninjaHolder.eulerAngles;
                 rot.z = Mathf.LerpAngle(originalRotation, finalRotation, flipTimer / flipTime);
-				rot.y = Mathf.LerpAngle(originalRotation, finalRotation * 2f, flipTimer / flipTime);
                 ninjaHolder.eulerAngles = rot;
                 if( flipTimer == flipTime ){
                     flipTimer = 0.0f;
