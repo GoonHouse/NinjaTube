@@ -23,6 +23,7 @@
 		};
 		float _Amount;
 		void vert (inout appdata_full v, out Input IN) {
+		//void vert (inout appdata_full v) {
 			UNITY_INITIALIZE_OUTPUT(Input, IN);
 			//float distanceSquared = v.vertex.x * v.vertex.x + v.vertex.z * v.vertex.z;
 			float distanceSquared = IN.worldPos.y*IN.worldPos.y;
@@ -32,6 +33,7 @@
 			float om = sin(distanceSquared*_SinTime.x/50) * _SinTime.x;
 			v.vertex.z = x*sin(om)+z*cos(om);
 			v.vertex.x = x*cos(om)-z*sin(om);
+			v.vertex.xyz += v.vertex.xyz*sin(om)*_Amount;
 			}
 
 		sampler2D _MainTex;
