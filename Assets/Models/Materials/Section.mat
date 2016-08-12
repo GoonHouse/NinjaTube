@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Section
-  m_Shader: {fileID: 4800000, guid: 31b9a9aaa55b9fe4c8f19c4478c33c6d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2ad53d6df0c4c254ba4346750b7cfbb3, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -77,6 +77,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
+        name: _Amount
+      second: 100
+    - first:
         name: _BumpScale
       second: 1
     - first:
@@ -93,7 +96,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0
     - first:
         name: _GlossyReflections
       second: 1
