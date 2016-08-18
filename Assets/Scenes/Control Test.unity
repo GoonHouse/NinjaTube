@@ -566,7 +566,7 @@ MonoBehaviour:
   player: {fileID: 1767224540}
   targetSpeed: 25
   returnSpeed: 5
-  playerSpeed: 1
+  playerSpeed: 2
   playerRotationSpeed: 1
 --- !u!23 &2140084933
 MeshRenderer:
