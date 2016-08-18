@@ -18,8 +18,11 @@ public class Input : MonoBehaviour {
 		float h = CrossPlatformInputManager.GetAxis("Horizontal");
 		float v = CrossPlatformInputManager.GetAxis("Vertical");
 
-		transform.position = world.transform.position + Vector3.ClampMagnitude(new Vector3 (h, v, 0), 1f); 
-		playerMoveTarget.transform.position += Vector3.ClampMagnitude(new Vector3 (h, v, 0), 1f) * Time.deltaTime * targetSpeed;
+		Vector3 inputVector = Vector3.ClampMagnitude (new Vector3 (h, v, 0), 1f);
+
+		transform.position = world.transform.position + inputVector; 
+		playerMoveTarget.transform.position += inputVector * Time.deltaTime * targetSpeed;
+
 
 	}
 }
