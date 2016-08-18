@@ -36,5 +36,14 @@ public class Input : MonoBehaviour {
 
 		player.transform.position += directionToMoveTarget * Time.deltaTime * playerSpeed; //move the player
 		player.transform.rotation = Quaternion.LookRotation (Vector3.forward, -gravity); //rotate the player
+
+		/* Cast a ray from the center of the world through the player
+		 * if we hit something see how far the player is from it
+		 * if the player is on the wrong side of it move the player back so it's on top of it
+		 * if the player is above it push the player to it with gravity
+		 * if the player is on it then allow jumps, on it will have to be a small range I think
+		 * if we didn't hit anything check to see if the player has fallen out of the world, if so then kill them */
+		 
+		  
 	}
 }
