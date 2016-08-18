@@ -5,7 +5,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Input : MonoBehaviour {
 	public Transform world;
 	public Transform playerMoveTarget;
-	public float targetSpeed;
+	public float targetSpeed = 10f;
+	public float returnSpeed = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class Input : MonoBehaviour {
 		transform.position = world.transform.position + inputVector; 
 		playerMoveTarget.transform.position += inputVector * Time.deltaTime * targetSpeed;
 
-
+		Vector3 gravity = Vector3.MoveTowards (playerMoveTarget.transform.position, world.transform.position, 0.01f);
+		playerMoveTarget.transform.position -= gravity * Time.deltaTime * returnSpeed;
 	}
 }
