@@ -30,9 +30,9 @@ public class Input : MonoBehaviour {
 		Vector3 moveTargetGravity = Vector3.MoveTowards (playerMoveTarget.transform.position, world.transform.position, 0.01f);
 		playerMoveTarget.transform.position -= moveTargetGravity * Time.deltaTime * returnSpeed;
 
-		Vector3 gravity = Vector3.MoveTowards (player.transform.position, world.transform.position, 0.01f);
+		Vector3 gravity = Vector3.MoveTowards (player.transform.position, world.transform.position, 0.01f); //this breaks if the player is exactly center!
 
-		Vector3 directionToMoveTarget = Vector3.Cross (moveTargetGravity, Vector3.forward); //this is wrong, needs work
+		Vector3 directionToMoveTarget = Vector3.Project (moveTargetGravity, Vector3.Cross(gravity, Vector3.forward));
 
 		player.transform.position += directionToMoveTarget * Time.deltaTime * playerSpeed;
 		player.transform.rotation = Quaternion.LookRotation (Vector3.forward, -gravity);
